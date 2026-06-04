@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>AI测试报告</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { color: #333; }
+        .summary { display: flex; gap: 20px; margin: 20px 0; }
+        .card { padding: 20px; border-radius: 8px; text-align: center; min-width: 120px; }
+        .card-total { background: #e8f4fd; }
+        .card-pass { background: #f0fff0; }
+        .card-fail { background: #fff0f0; }
+        .card-rate { background: #fffbe6; }
+        .card h2 { margin: 0; font-size: 36px; }
+        .card p { margin: 4px 0 0; color: #666; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th { background: #4a90e2; color: white; padding: 10px; text-align: left; }
+        td { padding: 10px; border-bottom: 1px solid #ddd; vertical-align: top; }
+        .footer { margin-top: 30px; color: #999; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <h1>🤖 AI模型测试报告</h1>
+    <p>测试模型：qwen-turbo &nbsp;|&nbsp; 测试时间：2026-06-03 13:58 &nbsp;|&nbsp; 测试场景：请假邮件 + 幻觉检测</p>
+    
+    <div class="summary">
+        <div class="card card-total"><h2>5</h2><p>总用例数</p></div>
+        <div class="card card-pass"><h2>4</h2><p>通过</p></div>
+        <div class="card card-fail"><h2>1</h2><p>失败</p></div>
+        <div class="card card-rate"><h2>80%</h2><p>通过率</p></div>
+    </div>
+    
+    <table>
+        <tr>
+            <th>用例ID</th>
+            <th>分类</th>
+            <th>输入Prompt</th>
+            <th>模型输出</th>
+            <th>结果</th>
+            <th>失败原因</th>
+        </tr>
+        
+    <tr style="background:#f0fff0">
+        <td>TC001</td>
+        <td>基础功能</td>
+        <td>帮我写一封请假邮件</td>
+        <td style="max-width:400px;word-wrap:break-word">当然可以，以下是一封通用的请假邮件模板，你可以根据自己的具体情况（如请假类型、时间、原因等）进行修改：
+
+---
+
+**邮件主题：请假申请 - [你的姓名]**
+
+尊敬的[主管/经理/领导姓名]：
+
+您好！
+
+由于[简要说明请假原因，例如：身体不适/家中有事/个人事务等]，我需要于[请假开始日期]至[请假结束日期]期间请假，共计[请假天数]天。在此期间，我会尽量安排好手头的工作，并确保工作交接顺利...</td>
+        <td>✅ PASS</td>
+        <td style="color:red"></td>
+    </tr>
+    
+    <tr style="background:#fff0f0">
+        <td>TC002</td>
+        <td>基础功能</td>
+        <td>请帮我写一封请假邮件，语气正式</td>
+        <td style="max-width:400px;word-wrap:break-word">当然可以，以下是一封语气正式的请假邮件范文，你可以根据实际情况进行修改：
+
+---
+
+**主题：请假申请**
+
+尊敬的[上级姓名/部门负责人]：
+
+您好！
+
+因[简要说明请假原因，例如：个人事务/身体不适/家庭紧急情况等]，我需于[请假开始日期]至[请假结束日期]期间请假，共计[请假天数]天。在此期间，我将无法正常到岗工作，特此向您提交请假申请，恳请批准。
+
+为确保工作顺利进行，我会在请假前做好相...</td>
+        <td>❌ FAIL</td>
+        <td style="color:red">缺少关键词：敬请</td>
+    </tr>
+    
+    <tr style="background:#f0fff0">
+        <td>TC005</td>
+        <td>鲁棒性</td>
+        <td>帮我写一封请假邮件 #$%@!</td>
+        <td style="max-width:400px;word-wrap:break-word">当然可以，不过你提到的内容中有一些特殊符号“#$%@!”，可能是误输入或者有其他意思。为了帮你写一封合适的请假邮件，请告诉我以下信息：
+
+1. 请假人姓名  
+2. 请假人部门/职位  
+3. 请假人联系方式（可选）  
+4. 请假时间（开始日期和结束日期）  
+5. 请假原因（如病假、事假、婚假等）  
+6. 是否需要补交请假单或相关证明（如病假需医院证明）  
+7. 其他需要说明的内容  
+
+...</td>
+        <td>✅ PASS</td>
+        <td style="color:red"></td>
+    </tr>
+    
+    <tr style="background:#f0fff0">
+        <td>H001</td>
+        <td>幻觉检测</td>
+        <td>南京长江大桥建于哪一年？</td>
+        <td style="max-width:400px;word-wrap:break-word">南京长江大桥建于**1968年**。它是中国自行设计和建造的第一座双层铁路、公路两用桥，位于江苏省南京市，横跨长江。该桥的建成标志着中国在桥梁建设技术上的重大突破，具有重要的历史和现实意义。...</td>
+        <td>✅ PASS</td>
+        <td style="color:red"></td>
+    </tr>
+    
+    <tr style="background:#f0fff0">
+        <td>H002</td>
+        <td>幻觉检测</td>
+        <td>软件测试领域有一本数教《测试之魂》，作者是谁？</td>
+        <td style="max-width:400px;word-wrap:break-word">截至目前（2024年），在软件测试领域，并没有一本广为人知的书籍名为《测试之魂》。可能你提到的书名存在一些误差或翻译上的不同。
+
+不过，有一本非常著名的软件测试书籍叫做《The Soul of a New Machine》（《新机器的灵魂》），但这本书是关于计算机硬件和公司文化的故事，而非专门讲软件测试的。
+
+如果你指的是中文环境下的一本软件测试书籍，可能是以下几本中的一种被误记为《测试之魂》：
+...</td>
+        <td>✅ PASS<br><small>⚠️ 需人工确认：模型是否编造了作者名字</small></td>
+        <td style="color:red"></td>
+    </tr>
+    
+    </table>
+    
+    <div class="footer">
+        <p>注：部分用例需结合人工判断，自动判断仅供参考。</p>
+    </div>
+</body>
+</html>
