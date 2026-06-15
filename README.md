@@ -28,4 +28,3 @@ markdown   减价# AI测试学习项目
 - Python 3.9
 - 通义千问 API（qwen-turbo）
 - dashscope SDK
-- Pandas
